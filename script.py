@@ -1,19 +1,9 @@
-from aiogram import Bot, types
-from aiogram.dispatcher import Dispatcher, FSMContext
-from aiogram.contrib.middlewares.logging import LoggingMiddleware
-from aiogram.dispatcher.filters.state import StatesGroup, State
-from aiogram.types import Message
-from aiogram.dispatcher.filters import Command, state
-from aiogram import executor
 from telethon import TelegramClient, events
-from aiogram.contrib.fsm_storage.memory import MemoryStorage
 import asyncio
 
-# Replace these with your own Telegram API credentials
 api_id = 5013357
 api_hash = '0d32f35094f14445afdd45539aa40445'
 
-# Create a new TelegramClient instance
 client = TelegramClient('session_name', api_id, api_hash)
 sending_messages = False
 
@@ -34,6 +24,7 @@ async def bmw(event):
             break
     sending_messages = False
 
+
 @client.on(events.NewMessage(outgoing=True, pattern='.mers'))
 async def mers(event):
     chat = await event.get_chat()
@@ -47,6 +38,7 @@ async def mers(event):
             break
     sending_messages = False
         
+
 
 @client.on(events.NewMessage(outgoing=True, pattern='.n'))
 async def number(event):
